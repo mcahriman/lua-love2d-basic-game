@@ -12,6 +12,7 @@ end
 local text = "Here we start our demo"
 local player = {}
 local ct = 0
+local showDebugInfo = false
 
 local catSprite = {}
 local mooseSprite = {}
@@ -37,12 +38,26 @@ function love.draw()
     -- draw background
     bgPic.draw()
 
-    love.graphics.print(text, 400, 0)
-    -- print ct in right corner 200 px from right even if resized
-    love.graphics.print(ct, love.graphics.getWidth()-200, 0)
+    -- draw debug info
+    if showDebugInfo then
+        love.graphics.print(text, 400, 0)
+        
+        -- print fps
+        love.graphics.print("FPS:" .. love.timer.getFPS(), 0, 0)
 
-    -- print fps
-    love.graphics.print(love.timer.getFPS(), 0, 0)
+        -- print mouse position
+        local x, y = love.mouse.getPosition()
+        love.graphics.print("Mouse: " .. x .. ", " .. y, 0, 20)
+
+        -- print player position x
+        love.graphics.print("Player: " .. player.x, 0, 40)
+
+        -- print player position y
+        love.graphics.print("Player: " .. player.y, 0, 60)
+
+
+    end
+
     catSprite.draw(player.x, player.y)
 
 end
@@ -55,6 +70,11 @@ function love.keypressed( key )
     -- on escape quit
     if key == "escape" then
         love.event.quit()
+    end
+
+    -- on f12 toggle debug info
+    if key == "f12" then
+        showDebugInfo = not showDebugInfo
     end
 end
 
