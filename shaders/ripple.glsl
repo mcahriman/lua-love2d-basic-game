@@ -22,11 +22,6 @@ vec4 effect(vec4 color, Image texture, vec2 texture_coords, vec2 screen_coords) 
     texCoord.x += ripple;
     texCoord.y += ripple;
 
-    // create lense effect
-    // texCoord.x += (distanceCoef) * 0.1;
-    // texCoord.y += (distanceCoef) * 0.1;
-    
-
     // mix the ripple effect with the original texture on distance from mousePosition
     float distanceFromMouse = distance(mousePosition, screen_coords.xy);
     float mixAmount = clamp((distanceFromMouse - 0.5) * 3.0, 0.0, 1.0);
