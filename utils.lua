@@ -22,4 +22,8 @@ function utils.lastn (data, n)
     return result
 end
 
+function utils.isPointInRect (x, y, rx, ry, rw, rh)
+    return x > rx and x < rx + rw and y > ry and y < ry + rh
+end
+
 return utils
