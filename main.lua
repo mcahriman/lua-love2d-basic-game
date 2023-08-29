@@ -52,23 +52,12 @@ function love.draw()
 
     -- draw debug info
     if showDebugInfo then
-        love.graphics.print(text, 400, 0)
-
-        -- print fps
-        love.graphics.print("FPS:" .. love.timer.getFPS(), 0, 0)
-
-        -- print mouse position
-        local x, y = love.mouse.getPosition()
-        love.graphics.print("Mouse: " .. x .. ", " .. y, 0, 20)
-
-        -- print happyCat position x
-        love.graphics.print("Player: " .. happyCat.x, 0, 40)
-
-        -- print happyCat position y
-
-        love.graphics.print("Player: " .. happyCat.y, 0, 60)
-
+        displayDebugInfo()
     end
+
+    -- display debug hint
+    love.graphics.print("Press F12 to toggle debug info", 0, love.graphics.getHeight() - 20)
+    
 
     -- draw score with big font in top middle
     love.graphics.setFont(love.graphics.newFont(50))
@@ -155,6 +144,30 @@ function love.update(dt)
     if prevVelocity > 0 and happyCat.velocity.y < 0 then
        score = score + 1
     end
+end
 
+function displayDebugInfo()
+    love.graphics.print(text, 400, 0)
+
+    -- print fps
+    love.graphics.print("FPS:" .. love.timer.getFPS(), 0, 0)
+
+    -- print mouse position
+    local x, y = love.mouse.getPosition()
+    love.graphics.print("Mouse: " .. x .. ", " .. y, 0, 20)
+
+    -- print happyCat position x
+    love.graphics.print("Cat X: " .. happyCat.x, 0, 40)
+
+    -- print happyCat position y
+
+    love.graphics.print("Cat Y: " .. happyCat.y, 0, 60)
+
+    -- print happyCat velocity x
+    love.graphics.print("Cat Vx: " .. happyCat.velocity.x, 0, 80)
+
+    -- print happyCat velocity y
+
+    love.graphics.print("Cat Vy: " .. happyCat.velocity.y, 0, 100)
 
 end
