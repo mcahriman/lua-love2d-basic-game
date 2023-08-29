@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "debug l0ve",
+            "program": {
+                "command": "C:/Program Files/LOVE/love.exe",
+                "communication": "pipe"
+            },
+            "args": [ 
+                "${workspaceFolder}",
+            ],
+            "request": "launch",
+            "stopOnEntry": false,
+            "type": "lua-local",
+        }
+    ]
+}
